@@ -56,7 +56,7 @@ function getDayName(date) {
     'Friday',
     'Saturday',
   ];
-  return WEEK_DAYS[new Date(date).getDay()];
+  return WEEK_DAYS[new Date(date).getUTCDay()];
 }
 
 /**
@@ -75,10 +75,10 @@ function getNextFriday(date) {
   const DAYS_COUNT = 7;
 
   const currentDate = new Date(date);
-  const plusDay = FRIDAY_INDEX - date.getDay();
+  const plusDay = FRIDAY_INDEX - date.getUTCDay();
 
   currentDate.setDate(
-    date.getDate() + (plusDay > 0 ? plusDay : DAYS_COUNT + plusDay)
+    date.getUTCDate() + (plusDay > 0 ? plusDay : DAYS_COUNT + plusDay)
   );
 
   return currentDate;
